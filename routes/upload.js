@@ -57,7 +57,7 @@ router.post('/', function(req, res, next) {
     if(fileType){
         storageName = hash + "." + fileType;
     }else{
-        storageName = hash;
+        storageName = hash + ".jpg";
     }
     let targetPath = '/' + directoryName + "/" + storageName;
     let storageNamePath = path.join(__dirname, '../uploads' + targetPath);
