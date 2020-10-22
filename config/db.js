@@ -4,8 +4,8 @@
 let mysql = require("mysql");
 // 博客
 module.exports =  mysql.createPool({
-    host:     "localhost",
-    user:     "xxxx",
-    password: "xxxx",
+    host:     "www.linchaoqun.com",
+    user:     "root",
+    password: "g7845120",
     database: "blog"
 });

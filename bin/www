@@ -16,13 +16,21 @@ try {
  * Initialise log4js first, so we don't miss any log messages
  */
 var log4js = require('log4js');
+var fs = require('fs');
 log4js.configure('./config/log4js.json');
 
 var log = log4js.getLogger("startup");
 
 var app = require('../app');
 var debug = require('debug')('file-server:server');
-var http = require('http');
+let https = require("https");
+// /**
+//  * Get port from environment and store in Express.
+//  */
+var options = {
+    key  : fs.readFileSync('./cert/1.key'),
+    cert : fs.readFileSync('./cert/1.pem')
+}
 
 /**
  * Get port from environment and store in Express.
@@ -35,7 +43,7 @@ app.set('port', port);
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
+var server = https.createServer(options,app);
 
 /**
  * Listen on provided port, on all network interfaces.
